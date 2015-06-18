@@ -1,0 +1,23 @@
+AppData/
+Contacts/
+Desktop/
+Documents/
+Downloads/
+Favorites/
+Links/
+Music/
+NTUSER.DAT*
+OneDrive/
+Pictures/
+Saved Games/
+Searches/
+Videos/
+_viminfo
+ntuser.*
+vimfiles/
+.vim/sessions
+.ssh
+.vim-fuf-data
+*.swp
+.netrwhist
+

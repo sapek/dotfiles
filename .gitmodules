@@ -1,0 +1,33 @@
+[submodule ".vim/bundle/vim-pandoc"]
+	path = .vim/bundle/vim-pandoc
+	url = https://github.com/vim-pandoc/vim-pandoc.git
+[submodule ".vim/bundle/gitsessions.vim"]
+	path = .vim/bundle/gitsessions.vim
+	url = https://github.com/sapek/gitsessions.vim.git
+[submodule ".vim/bundle/vim-pandoc-syntax"]
+	path = .vim/bundle/vim-pandoc-syntax
+	url = https://github.com/vim-pandoc/vim-pandoc-syntax.git
+[submodule ".vim/bundle/haskell-vim"]
+	path = .vim/bundle/haskell-vim
+	url = https://github.com/raichoo/haskell-vim.git
+[submodule ".vim/bundle/vim-fugitive"]
+	path = .vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule ".vim/bundle/vim-airline"]
+	path = .vim/bundle/vim-airline
+	url = https://github.com/Bling/vim-airline
+[submodule ".vim/bundle/FuzzyFinder"]
+	path = .vim/bundle/FuzzyFinder
+	url = https://github.com/vim-scripts/FuzzyFinder.git
+[submodule ".vim/bundle/L9"]
+	path = .vim/bundle/L9
+	url = https://github.com/vim-scripts/L9.git
+[submodule ".vim/bundle/searchfold.vim"]
+	path = .vim/bundle/searchfold.vim
+	url = https://github.com/vim-scripts/searchfold.vim.git
+[submodule ".vim/bundle/Mark--Karkat"]
+	path = .vim/bundle/Mark--Karkat
+	url = https://github.com/vim-scripts/Mark--Karkat.git
+[submodule ".vim/bundle/vim-colors-solarized"]
+	path = .vim/bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git

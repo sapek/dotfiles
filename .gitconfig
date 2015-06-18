@@ -1,0 +1,26 @@
+[user]
+	name = Adam Sapek
+	email = github@work.sapek.com
+
+[diff]
+    tool = default-difftool
+ 
+[difftool "default-difftool"]
+    cmd = git_diff_tool $LOCAL $REMOTE
+
+[difftool]
+    prompt = false    
+
+[github]
+	user = sapek
+
+[color "status"]
+    changed = 1
+    untracked = 6
+    branch = 1
+
+[alias]
+	diffall = difftool --extcmd=odd.exe --dir-diff
+
+[core]
+	autocrlf = false
