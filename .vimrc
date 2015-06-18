@@ -206,6 +206,7 @@ if &term == "win32"
     exe "hi! gitcommitUnmergedFile   ctermfg=14"
     exe "hi! gitcommitFile           ctermfg=3"
     exe "hi! Normal                  ctermfg=15"
+    set laststatus=1
 endif
 
 autocmd BufRead,BufNewFile *.txt set filetype=doc
