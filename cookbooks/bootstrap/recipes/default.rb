@@ -139,6 +139,7 @@ registry_key 'HKCU\SOFTWARE\JetBrains\ReSharper\v8.2\vs12.0\LicenseSettings\Str'
     :data => 'LICENSE_SERVER_FLOATING'
   }]
   action :create
+  recursive true
 end
 
 registry_key 'HKCU\SOFTWARE\JetBrains\ReSharper\v8.2\vs12.0\LicenseSettings\Bool' do
@@ -148,6 +149,7 @@ registry_key 'HKCU\SOFTWARE\JetBrains\ReSharper\v8.2\vs12.0\LicenseSettings\Bool
     :data => 1
   }]
   action :create
+  recursive true
 end
 
 # Enable RDP
