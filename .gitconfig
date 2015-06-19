@@ -23,4 +23,4 @@
 	diffall = difftool --extcmd=odd.exe --dir-diff
 
 [core]
-	autocrlf = false
+	autocrlf = true
