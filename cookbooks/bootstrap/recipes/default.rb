@@ -162,3 +162,7 @@ registry_key 'HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server' do
   action :create
 end
 
+execute 'High performance power scheme' do
+    command 'powercfg -setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c'
+end
+
