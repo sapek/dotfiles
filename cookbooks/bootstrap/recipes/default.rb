@@ -45,12 +45,15 @@ end
 windows_package 'Odd' do
     source '\\\\tkfiltoolbox\\tools\\23785\\2.7.3.5\\msi\\Odd.msi'
     action :install
-    only_if {::File.exists?('\\\\tkfiltoolbox\\tools')}
+    ignore_failure true
 end    
 
-execute 'Microsoft Visual Studio Ultimate 2013' do
-    command "\"\\\\products\\public\\PRODUCTS\\Developers\\Visual Studio 2013\\Ultimate\\vs_ultimate\" /adminfile \"#{ENV['USERPROFILE']}\\VisualStudio2013Deployment.xml\" /quiet /norestart"
-    not_if {::File.exists?("#{ENV['ProgramFiles(x86)']}/Microsoft Visual Studio 12.0")}
+windows_package 'Microsoft Visual Studio Ultimate 2013' do
+    source "\\\\products\\public\\PRODUCTS\\Developers\\Visual Studio 2013\\Ultimate\\vs_ultimate" 
+    installer_type :custom
+    options "/adminfile \"#{ENV['USERPROFILE']}\\VisualStudio2013Deployment.xml\" /quiet /norestart"
+    ignore_failure true
+    action :install
 end
 
 ###############################################
