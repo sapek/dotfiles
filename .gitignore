@@ -20,4 +20,6 @@ vimfiles/
 .vim-fuf-data
 *.swp
 .netrwhist
-
+.chef
+nodes
+.gem

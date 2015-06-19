@@ -31,3 +31,12 @@
 [submodule ".vim/bundle/vim-colors-solarized"]
 	path = .vim/bundle/vim-colors-solarized
 	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "cookbooks/windows"]
+	path = cookbooks/windows
+	url = https://github.com/opscode-cookbooks/windows.git
+[submodule "cookbooks/chef_handler"]
+	path = cookbooks/chef_handler
+	url = https://github.com/opscode-cookbooks/chef_handler.git
+[submodule "cookbooks/chocolatey"]
+	path = cookbooks/chocolatey
+	url = https://github.com/chocolatey/chocolatey-cookbook.git
