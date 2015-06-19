@@ -150,14 +150,10 @@ end
 # Enable RDP
 registry_key 'HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server' do
   values [{
-    :name => 'FdenyTSConnections',
+    :name => 'fDenyTSConnections',
     :type => :dword,
     :data => 0
   }]
   action :create
-end
-
-execute "RDP firewall hole" do
-    command "netsh advfirewall firewall set rule group=\"remote desktop\" new enable=Yes"
 end
 
