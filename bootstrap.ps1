@@ -5,6 +5,18 @@ iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.p
 choco install git.install -version 1.9.5.20150114 -y
 choco install chef-client -y
 
-# Run in a new instance of PowerShell so that environment is refreshed
-powershell -NoProfile -ExecutionPolicy Bypass -Command "iex ((new-object net.webclient).DownloadString('https://raw.githubusercontent.com/sapek/dotfiles/master/cook.ps1'))"
+# Refresh Path
+$env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
+
+# "Clone" the dotfiles repo into home directory
+cd $HOME
+git init
+git remote add origin https://github.com/sapek/dotfiles.git
+git fetch
+git checkout --track origin/master
+git submodule init
+git submodule update
+
+# Apply the Chef recipe bootstrap
+chef-client --local-mode --runlist 'recipe[bootstrap]'
 
