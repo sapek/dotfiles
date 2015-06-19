@@ -152,6 +152,15 @@ registry_key 'HKCU\SOFTWARE\JetBrains\ReSharper\v8.2\vs12.0\LicenseSettings\Bool
   recursive true
 end
 
+registry_key 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' do
+  values [{
+    :name => 'EnableLUA',
+    :type => :dword,
+    :data => 0
+  }]
+  action :create
+end
+
 # Enable RDP
 registry_key 'HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server' do
   values [{
