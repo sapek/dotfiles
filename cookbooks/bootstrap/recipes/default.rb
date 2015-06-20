@@ -29,7 +29,6 @@ end
     vim 
     google-chrome-x64 
     firefox 
-    python2
     haskellplatform 
     cmake
     }
@@ -59,6 +58,17 @@ end
 ###############################################
 # Install software from inet
 ###############################################
+windows_package "Python 2.7.10 (64-bit)" do
+    source 'https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64.msi'
+    action :install
+end
+
+windows_zipfile "#{SOFTWARE_DRIVE}/Python27/symbols" do
+    source 'https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64-pdb.zip'
+    action :unzip
+    not_if {::File.exists?("#{SOFTWARE_DRIVE}/Python27/symbols")}
+end
+
 windows_package 'Python Tools 2.1 for Visual Studio 2013' do
     # for fuck's sake, why can't we provide a normal download URL
     source 'http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=pytools&DownloadId=920477&FileTime=130576900091770000&Build=21018'
