@@ -188,3 +188,21 @@ end
 execute 'File sharing' do
     command 'netsh advfirewall firewall set rule group="File and Printer Sharing" new enable="Yes"'
 end
+
+# Chrome extensions
+extensions = [ 
+    'cjpalhdlnbpafiamejdnhcphjbkeiagm', # uBlock
+    'hdokiejnpimakedhajhdlcegeplioahd', # LastPass
+]
+
+extensions.each do |id|
+    registry_key "HKEY_LOCAL_MACHINE\\Software\\Wow6432Node\\Google\\Chrome\\Extensions\\#{id}" do
+      values [{
+        :name => 'update_url',
+        :type => :string,
+        :data =>  'https://clients2.google.com/service/update2/crx'
+      }]
+      action :create
+      recursive true
+    end
+end
