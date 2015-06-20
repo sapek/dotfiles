@@ -185,3 +185,6 @@ execute 'High performance power scheme' do
     command 'powercfg -setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c'
 end
 
+execute 'File sharing' do
+    command 'netsh advfirewall firewall set rule group="File and Printer Sharing" new enable="Yes"'
+end
