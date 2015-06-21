@@ -76,6 +76,12 @@ windows_package 'Python Tools 2.1 for Visual Studio 2013' do
     action :install
 end
 
+windows_package 'LLVM' do
+    source 'http://llvm.org/releases/3.6.1/LLVM-3.6.1-win32.exe'
+    installer_type :nsis
+    action :install
+end
+
 windows_package "JetBrains ReSharper 8.2.3" do
     source 'http://download.jetbrains.com/resharper/ReSharperSetup.8.2.3000.5176.msi'
     action :install
