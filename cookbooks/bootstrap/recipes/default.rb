@@ -177,6 +177,19 @@ registry_key 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' do
   action :create
 end
 
+registry_key 'HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced' do
+  values [{
+    :name => 'Hidden',
+    :type => :dword,
+    :data => 1
+  },{
+    :name => 'HideFileExt',
+    :type => :dword,
+    :data => 0
+  }]
+  action :create
+end
+
 # Enable RDP
 registry_key 'HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server' do
   values [{
