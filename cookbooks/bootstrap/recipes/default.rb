@@ -187,16 +187,21 @@ registry_key 'HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server' do
   action :create
 end
 
-execute 'RDP firewall' do
-    command 'netsh advfirewall firewall set rule group="remote desktop" new enable=Yes'
+# Enable firewall groups
+firewall_groups = [
+    'Remote Desktop',
+    'File and Printer Sharing',
+    'World Wide Web Services (HTTP)',
+]
+
+firewall_groups.each do |group|
+    execute group do
+        command "netsh advfirewall firewall set rule group=\"#{group}\" new enable=\"Yes\""
+    end
 end
 
 execute 'High performance power scheme' do
     command 'powercfg -setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c'
-end
-
-execute 'File sharing' do
-    command 'netsh advfirewall firewall set rule group="File and Printer Sharing" new enable="Yes"'
 end
 
 # Chrome extensions
