@@ -16,8 +16,8 @@
 
 [color "status"]
     changed = 1
-    untracked = 6
-    branch = 1
+    untracked = 0
+    branch = 6
 
 [alias]
 	diffall = difftool --extcmd=odd.exe --dir-diff
