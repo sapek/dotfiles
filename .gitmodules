@@ -7,9 +7,6 @@
 [submodule ".vim/bundle/vim-pandoc-syntax"]
 	path = .vim/bundle/vim-pandoc-syntax
 	url = https://github.com/vim-pandoc/vim-pandoc-syntax.git
-[submodule ".vim/bundle/haskell-vim"]
-	path = .vim/bundle/haskell-vim
-	url = https://github.com/raichoo/haskell-vim.git
 [submodule ".vim/bundle/vim-fugitive"]
 	path = .vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
@@ -28,9 +25,6 @@
 [submodule ".vim/bundle/Mark--Karkat"]
 	path = .vim/bundle/Mark--Karkat
 	url = https://github.com/vim-scripts/Mark--Karkat.git
-[submodule ".vim/bundle/vim-colors-solarized"]
-	path = .vim/bundle/vim-colors-solarized
-	url = https://github.com/altercation/vim-colors-solarized.git
 [submodule "cookbooks/windows"]
 	path = cookbooks/windows
 	url = https://github.com/opscode-cookbooks/windows.git
