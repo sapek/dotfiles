@@ -26,14 +26,14 @@
      <SelectableItemCustomization Id="ReportingHidden" Selected="yes" />
      <SelectableItemCustomization Id="SDKTools3Hidden" Selected="yes" />
      <SelectableItemCustomization Id="SDKTools4Hidden" Selected="yes" />
-     <SelectableItemCustomization Id="Silverlight5DRTHidden" Selected="no" />
-     <SelectableItemCustomization Id="SQLCEHidden" Selected="no" />
-     <SelectableItemCustomization Id="SQLCLRTypesHidden" Selected="no" />
-     <SelectableItemCustomization Id="SQLDACHidden" Selected="no" />
-     <SelectableItemCustomization Id="SQLDOMHidden" Selected="no" />
-     <SelectableItemCustomization Id="SQLSharedManagementObjectsHidden" Selected="no" />
-     <SelectableItemCustomization Id="StoryboardingHidden" Selected="no" />
-     <SelectableItemCustomization Id="TSQLHidden" Selected="no" />
+     <SelectableItemCustomization Id="Silverlight5DRTHidden" Selected="yes" />
+     <SelectableItemCustomization Id="SQLCEHidden" Selected="yes" />
+     <SelectableItemCustomization Id="SQLCLRTypesHidden" Selected="yes" />
+     <SelectableItemCustomization Id="SQLDACHidden" Selected="yes" />
+     <SelectableItemCustomization Id="SQLDOMHidden" Selected="yes" />
+     <SelectableItemCustomization Id="SQLSharedManagementObjectsHidden" Selected="yes" />
+     <SelectableItemCustomization Id="StoryboardingHidden" Selected="yes" />
+     <SelectableItemCustomization Id="TSQLHidden" Selected="yes" />
      <SelectableItemCustomization Id="VCCompilerHidden" Selected="yes" />
      <SelectableItemCustomization Id="VCCoreHidden" Selected="yes" />
      <SelectableItemCustomization Id="VCDebugHidden" Selected="yes" />
