@@ -34,3 +34,9 @@
 [submodule "cookbooks/chocolatey"]
 	path = cookbooks/chocolatey
 	url = https://github.com/chocolatey/chocolatey-cookbook.git
+[submodule ".vim/bundle/vim-colors-solarized"]
+	path = .vim/bundle/vim-colors-solarized
+	url = https://github.com/sapek/vim-colors-solarized.git
+[submodule ".vim/bundle/vim2hs"]
+	path = .vim/bundle/vim2hs
+	url = https://github.com/sapek/vim2hs.git
