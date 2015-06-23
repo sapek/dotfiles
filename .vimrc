@@ -11,6 +11,7 @@ let g:pandoc#syntax#conceal#use = 0
 let g:pandoc#syntax#codeblocks#embeds#langs = ["cpp", "python", "bash=sh", "cs"]
 let g:solarized_italic = 0
 let g:solarized_termtrans = 1
+let g:haskell_conceal = 0
 
 "set clipboard=unnamed
 set expandtab
@@ -208,6 +209,8 @@ if &term == "win32"
     exe "hi! Normal                  ctermfg=15"
     set laststatus=1
 endif
+
+exe "hi! link hsDelimiter Normal"
 
 autocmd BufRead,BufNewFile *.txt set filetype=doc
 autocmd FileType c,cpp,haskell,xml :set textwidth=79
