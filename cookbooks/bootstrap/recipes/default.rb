@@ -9,9 +9,9 @@ SOFTWARE_DRIVE = "#{ENV['SYSTEMDRIVE']}"
 DEV_DRIVE = 'c:'
 
 ###############################################
-# Enable Windows features        
+# Enable Windows features
 ###############################################
-%w{ 
+%w{
     IIS-WebServerRole
     IIS-WebServer
     Microsoft-Hyper-V-All
@@ -25,11 +25,11 @@ end
 ###############################################
 # Install Chocolatey packages
 ###############################################
-%w{ 
-    vim 
-    google-chrome-x64 
-    firefox 
-    haskellplatform 
+%w{
+    vim
+    google-chrome-x64
+    firefox
+    haskellplatform
     cmake
     }
 .each do |pack|
@@ -45,10 +45,10 @@ windows_package 'Odd' do
     source '\\\\tkfiltoolbox\\tools\\23785\\2.7.3.5\\msi\\Odd.msi'
     action :install
     ignore_failure true
-end    
+end
 
 windows_package 'Microsoft Visual Studio Ultimate 2013' do
-    source "\\\\products\\public\\PRODUCTS\\Developers\\Visual Studio 2013\\Ultimate\\vs_ultimate" 
+    source "\\\\products\\public\\PRODUCTS\\Developers\\Visual Studio 2013\\Ultimate\\vs_ultimate"
     installer_type :custom
     options "/adminfile \"#{ENV['USERPROFILE']}\\VisualStudio2013Deployment.xml\" /quiet /norestart"
     ignore_failure true
@@ -218,7 +218,7 @@ execute 'High performance power scheme' do
 end
 
 # Chrome extensions
-extensions = [ 
+extensions = [
     'cjpalhdlnbpafiamejdnhcphjbkeiagm', # uBlock
     'hdokiejnpimakedhajhdlcegeplioahd', # LastPass
 ]
