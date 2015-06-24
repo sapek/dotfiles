@@ -170,7 +170,7 @@ end
 
 registry_key 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' do
   values [{
-    :name => 'EnableLUA',
+    :name => 'ConsentPromptBehaviorAdmin',
     :type => :dword,
     :data => 0
   }]
