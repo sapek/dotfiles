@@ -185,6 +185,7 @@ if has("autocmd")
 endif  
 
 set sessionoptions+=resize,winpos
+set sessionoptions-=options
 
 call pathogen#infect()
 
