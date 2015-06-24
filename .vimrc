@@ -135,7 +135,7 @@ nnoremap ' `
 nnoremap ` '
 
 " Open file under cursor in a new tab
-map gf :tabnew <cfile><CR>
+nnoremap gf <c-w>gf
 
 " map F1 to help for word under cursor
 map <silent> <F1> "zyiw:exe "h ".@z.""<CR>
@@ -210,7 +210,9 @@ if &term == "win32"
     set laststatus=1
 endif
 
-exe "hi! link hsDelimiter Normal"
+exe "hi! link hsDelimiter Statement"
+exe "hi! link hsStructure PreProc"
+exe "hi! link hsExprKeyword Statement"
 
 autocmd BufRead,BufNewFile *.txt set filetype=doc
 autocmd FileType c,cpp,haskell,xml :set textwidth=79
