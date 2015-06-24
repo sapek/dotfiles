@@ -214,6 +214,7 @@ exe "hi! link hsDelimiter Normal"
 
 autocmd BufRead,BufNewFile *.txt set filetype=doc
 autocmd FileType c,cpp,haskell,xml :set textwidth=79
+autocmd FileType c,cpp,haskell :set foldlevel=20
 autocmd FileType gitcommit,pandoc,doc :set nocindent
 autocmd FileType gitcommit set tw=72
 autocmd FileType pandoc,doc :set autoindent
