@@ -24,3 +24,5 @@ vimfiles/
 .chef
 nodes
 .gem
+.config
+CurrentSettings.vssettings
