@@ -113,6 +113,22 @@ link "#{ENV['USERPROFILE']}/vimfiles" do
     to "#{ENV['USERPROFILE']}/.vim"
 end
 
+# Non-gui vim on Windows doesn't find spelling dictionaries in the install
+# location. As a workaround create links from .vim/spell directory.
+%w{
+    en.ascii.spl
+    en.ascii.sug
+    en.latin1.spl
+    en.latin1.sug
+    en.utf-8.spl
+    en.utf-8.sug
+}
+.each do |dictionary|
+    link "#{ENV['USERPROFILE']}/.vim/spell/#{dictionary}" do
+        to "#{ENV['ProgramFiles(x86)']}/vim/vim74/spell/#{dictionary}"
+    end
+end
+
 ###############################################
 # Set environment variables
 ###############################################

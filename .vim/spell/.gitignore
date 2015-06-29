@@ -1,0 +1,3 @@
+# Non-gui vim on Windows doesn't find spelling dictionaries in the install
+# location. As a workaround create links from .vim/spell directory.
+en*
