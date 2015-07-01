@@ -113,6 +113,25 @@ link "#{ENV['USERPROFILE']}/vimfiles" do
     to "#{ENV['USERPROFILE']}/.vim"
 end
 
+
+###############################################
+# install cabal packages
+###############################################
+execute "cabal update" do
+    command "cabal update"
+end
+
+%w{
+    pointfree
+    pandoc
+}
+.each do |package|
+    execute package do
+        command "cabal install --jobs #{package}"
+    end
+end
+
+
 # Non-gui vim on Windows doesn't find spelling dictionaries in the install
 # location. As a workaround create links from .vim/spell directory.
 %w{
