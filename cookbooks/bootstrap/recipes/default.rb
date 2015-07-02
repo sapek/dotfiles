@@ -167,7 +167,8 @@ end
 # Update PATH
 ###############################################
 PATH = [
-    "#{ENV['ProgramFiles(x86)']}/CMake/bin"
+    "#{ENV['ProgramFiles(x86)']}/CMake/bin",
+    "#{SOFTWARE_DRIVE}/Python27",
 ]
 
 PATH.each do |path|
