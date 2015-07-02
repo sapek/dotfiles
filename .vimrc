@@ -228,3 +228,5 @@ autocmd FileType pandoc,doc :set fo+=tn1
 autocmd BufNewFile,BufRead COMMIT_EDITMSG set spell
 " remove trailing white spaces in pandoc files
 " autocmd FileType pandoc autocmd BufWritePre <buffer> :%s/\s\+$//e
+" auto-cleanup fugitive buffers
+autocmd BufReadPost fugitive://* set bufhidden=delete
