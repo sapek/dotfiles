@@ -31,6 +31,7 @@ end
     firefox
     haskellplatform
     cmake
+    doxygen.install
     }
 .each do |pack|
   chocolatey pack do
