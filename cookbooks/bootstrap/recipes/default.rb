@@ -56,6 +56,14 @@ windows_package 'Microsoft Visual Studio Ultimate 2013' do
     action :install
 end
 
+windows_package 'Microsoft Visual Studio Enterprise 2015' do
+    source "\\\\products\\public\\PRODUCTS\\Developers\\Visual Studio 2015\\Enterprise\\vs_enterprise"
+    installer_type :custom
+    options "/adminfile \"#{ENV['USERPROFILE']}\\VisualStudio2015Deployment.xml\" /quiet /norestart"
+    ignore_failure true
+    action :install
+end
+
 ###############################################
 # Install software from inet
 ###############################################
@@ -210,6 +218,19 @@ registry_key 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' do
     :name => 'ConsentPromptBehaviorAdmin',
     :type => :dword,
     :data => 0
+  }]
+  action :create
+end
+
+registry_key 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock' do
+  values [{
+    :name => 'AllowDevelopmentWithoutDevLicense',
+    :type => :dword,
+    :data => 1
+  },{
+    :name => 'AllowAllTrustedApps',
+    :type => :dword,
+    :data => 1
   }]
   action :create
 end
