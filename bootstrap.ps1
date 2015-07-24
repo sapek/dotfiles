@@ -1,3 +1,6 @@
+# Specify proxy
+$env:HTTP_PROXY = "http://itgproxy"
+
 # Install Chocolatey
 iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
 
