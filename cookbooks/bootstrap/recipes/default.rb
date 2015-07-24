@@ -20,6 +20,16 @@ windows_package 'Microsoft Visual Studio Ultimate 2013' do
     action :install
 end
 
+windows_package 'Microsoft Visual Studio 2013 Update 4' do
+    source "\\\\products\\public\\PRODUCTS\\Developers\\Visual Studio 2013\\Visual Studio 2013.4 Patch\\VS2013.4.exe"
+    installer_type :custom
+    options "/quiet /norestart"
+    ignore_failure true
+    timeout 1800
+    not_if {::File.exists?("#{ENV['ProgramFiles(x86)']}/Microsoft SDKs/Portable")}
+    action :install
+end
+
 windows_package 'Microsoft Visual Studio Enterprise 2015' do
     source "\\\\products\\public\\PRODUCTS\\Developers\\Visual Studio 2015\\Enterprise\\vs_enterprise"
     installer_type :custom
