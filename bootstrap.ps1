@@ -12,6 +12,7 @@ $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
 cd $HOME
 git init
 git remote add origin https://github.com/sapek/dotfiles.git
+git remote set-url --push origin git@github.com:sapek/dotfiles.git
 git fetch
 git checkout --track origin/master
 git submodule init
