@@ -86,8 +86,10 @@ windows_package 'LLVM' do
     action :install
 end
 
-windows_package "JetBrains ReSharper 8.2.3" do
-    source 'http://download.jetbrains.com/resharper/ReSharperSetup.8.2.3000.5176.msi'
+windows_package "JetBrains ReSharper Ultimate in Visual Studio 2015" do
+    source 'http://download.jetbrains.com/resharper/JetBrains.ReSharperUltimate.2015.1.2.exe'
+    installer_type :custom
+    options "/VsVersion=12,14 /SpecificProductNames=ReSharper;dotTrace;dotMemory;dotPeek /Silent=True"
     action :install
 end
 
@@ -197,30 +199,6 @@ end
 ###############################################
 # Registry settings
 ###############################################
-registry_key 'HKCU\SOFTWARE\JetBrains\ReSharper\v8.2\vs12.0\LicenseSettings\Str' do
-  values [{
-    :name => 'CustomLicenseServerUrl',
-    :type => :string,
-    :data => 'http://resharper8:8080/licenseServer'
-  },{
-    :name => 'LicenseMode',
-    :type => :string,
-    :data => 'LICENSE_SERVER_FLOATING'
-  }]
-  action :create
-  recursive true
-end
-
-registry_key 'HKCU\SOFTWARE\JetBrains\ReSharper\v8.2\vs12.0\LicenseSettings\Bool' do
-  values [{
-    :name => 'UseCustomLicenseServer',
-    :type => :dword,
-    :data => 1
-  }]
-  action :create
-  recursive true
-end
-
 registry_key 'HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System' do
   values [{
     :name => 'ConsentPromptBehaviorAdmin',
