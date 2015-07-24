@@ -9,6 +9,33 @@ SOFTWARE_DRIVE = "#{ENV['SYSTEMDRIVE']}"
 DEV_DRIVE = 'c:'
 
 ###############################################
+# Install software from corpnet
+###############################################
+windows_package 'Microsoft Visual Studio Ultimate 2013' do
+    source "\\\\products\\public\\PRODUCTS\\Developers\\Visual Studio 2013\\Ultimate\\vs_ultimate"
+    installer_type :custom
+    options "/adminfile \"#{ENV['USERPROFILE']}\\VisualStudio2013Deployment.xml\" /quiet /norestart"
+    ignore_failure true
+    timeout 1800
+    action :install
+end
+
+windows_package 'Microsoft Visual Studio Enterprise 2015' do
+    source "\\\\products\\public\\PRODUCTS\\Developers\\Visual Studio 2015\\Enterprise\\vs_enterprise"
+    installer_type :custom
+    options "/adminfile \"#{ENV['USERPROFILE']}\\VisualStudio2015Deployment.xml\" /quiet /norestart"
+    ignore_failure true
+    timeout 1800
+    action :install
+end
+
+windows_package 'Odd' do
+    source '\\\\tkfiltoolbox\\tools\\23785\\2.7.3.5\\msi\\Odd.msi'
+    action :install
+    ignore_failure true
+end
+
+###############################################
 # Enable Windows features
 ###############################################
 %w{
@@ -40,31 +67,6 @@ end
 end
 
 ###############################################
-# Install software from corpnet
-###############################################
-windows_package 'Odd' do
-    source '\\\\tkfiltoolbox\\tools\\23785\\2.7.3.5\\msi\\Odd.msi'
-    action :install
-    ignore_failure true
-end
-
-windows_package 'Microsoft Visual Studio Ultimate 2013' do
-    source "\\\\products\\public\\PRODUCTS\\Developers\\Visual Studio 2013\\Ultimate\\vs_ultimate"
-    installer_type :custom
-    options "/adminfile \"#{ENV['USERPROFILE']}\\VisualStudio2013Deployment.xml\" /quiet /norestart"
-    ignore_failure true
-    action :install
-end
-
-windows_package 'Microsoft Visual Studio Enterprise 2015' do
-    source "\\\\products\\public\\PRODUCTS\\Developers\\Visual Studio 2015\\Enterprise\\vs_enterprise"
-    installer_type :custom
-    options "/adminfile \"#{ENV['USERPROFILE']}\\VisualStudio2015Deployment.xml\" /quiet /norestart"
-    ignore_failure true
-    action :install
-end
-
-###############################################
 # Install software from inet
 ###############################################
 windows_package "Python 2.7.10 (64-bit)" do
@@ -76,13 +78,6 @@ windows_zipfile "#{SOFTWARE_DRIVE}/Python27/symbols" do
     source 'https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64-pdb.zip'
     action :unzip
     not_if {::File.exists?("#{SOFTWARE_DRIVE}/Python27/symbols")}
-end
-
-windows_package 'Python Tools 2.1 for Visual Studio 2013' do
-    # for fuck's sake, why can't we provide a normal download URL
-    source 'http://download-codeplex.sec.s-msft.com/Download/Release?ProjectName=pytools&DownloadId=920477&FileTime=130576900091770000&Build=21018'
-    installer_type :msi
-    action :install
 end
 
 windows_package 'LLVM' do
@@ -126,8 +121,12 @@ end
 ###############################################
 # install cabal packages
 ###############################################
-execute "cabal update" do
-    command "cabal update"
+powershell_script "cabal update" do
+    code <<-EOH
+    $env:HTTP_PROXY = "http://itgproxy"
+    $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
+    cabal update
+    EOH
 end
 
 %w{
@@ -135,8 +134,13 @@ end
     pandoc
 }
 .each do |package|
-    execute package do
-        command "cabal install --jobs #{package}"
+    powershell_script package do
+        code <<-EOH
+        $env:HTTP_PROXY = "http://itgproxy"
+        $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
+        cabal install --jobs #{package}
+        EOH
+        timeout 1800
     end
 end
 
@@ -170,6 +174,10 @@ end
 
 env 'PreferredToolArchitecture' do
     value 'x64'
+end
+
+env 'HTTP_PROXY' do
+    value 'http://itgproxy'
 end
 
 ###############################################
