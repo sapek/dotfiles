@@ -90,6 +90,12 @@ windows_zipfile "#{SOFTWARE_DRIVE}/Python27/symbols" do
     not_if {::File.exists?("#{SOFTWARE_DRIVE}/Python27/symbols")}
 end
 
+windows_zipfile "#{ENV['ProgramFiles(x86)']}/ProcessExplorer" do
+    source 'https://download.sysinternals.com/files/ProcessExplorer.zip'
+    action :unzip
+    not_if {::File.exists?("#{ENV['ProgramFiles(x86)']}/ProcessExplorer/procexp.exe")}
+end
+
 windows_package 'LLVM' do
     source 'http://llvm.org/releases/3.6.1/LLVM-3.6.1-win32.exe'
     installer_type :nsis
