@@ -105,7 +105,7 @@ end
 windows_package "JetBrains ReSharper Ultimate in Visual Studio 2015" do
     source 'http://download.jetbrains.com/resharper/JetBrains.ReSharperUltimate.2015.1.2.exe'
     installer_type :custom
-    options "/VsVersion=12,14 /SpecificProductNames=ReSharper;dotTrace;dotMemory;dotPeek /Silent=True"
+    options "/VsVersion=12,14 /SpecificProductNames=ReSharper /Silent=True"
     action :install
 end
 
