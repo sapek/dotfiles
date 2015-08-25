@@ -115,10 +115,16 @@ windows_package 'PuTTY release 0.64' do
     action :install
 end
 
-windows_package 'Boost 1.58' do
-    source 'http://downloads.sourceforge.net/project/boost/boost-binaries/1.58.0/boost_1_58_0-msvc-12.0-64.exe'
-    options "/DIR=#{DEV_DRIVE}\\boost_1_58_0"
-    not_if {::File.exists?("#{DEV_DRIVE}/boost_1_58_0/boost-build.jam")}
+%w{
+    12
+    14
+}
+.each do |ver|
+    windows_package "Boost 1.59 msvc-#{ver}" do
+        source "http://iweb.dl.sourceforge.net/project/boost/boost-binaries/1.59.0/boost_1_59_0-msvc-#{ver}.0-64.exe"
+        options "/DIR=#{DEV_DRIVE}\\boost_1_59_0"
+        not_if {::File.exists?("#{DEV_DRIVE}/boost_1_59_0/lib64-msvc-#{ver}.0/DEPENDENCY_VERSIONS.txt")}
+    end
 end
 
 windows_zipfile "#{SOFTWARE_DRIVE}/tools/cmder" do
@@ -183,11 +189,11 @@ end
 # Set environment variables
 ###############################################
 env 'BOOST_ROOT' do
-    value "#{DEV_DRIVE}/boost_1_58_0"
+    value "#{DEV_DRIVE}/boost_1_59_0"
 end
 
 env 'BOOST_LIBRARYDIR' do
-    value "#{DEV_DRIVE}/boost_1_58_0/lib64-msvc-12.0"
+    value "#{DEV_DRIVE}/boost_1_59_0/lib64-msvc-12.0;#{DEV_DRIVE}/boost_1_59_0/lib64-msvc-14.0"
 end
 
 env 'PreferredToolArchitecture' do
