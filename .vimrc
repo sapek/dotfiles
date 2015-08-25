@@ -182,7 +182,7 @@ if has("autocmd")
     \ if line("'\"") > 0 && line("'\"") <= line("$") |
     \   exe "normal g`\"" |
     \ endif
-endif  
+endif
 
 set sessionoptions+=resize,winpos
 set sessionoptions-=options
@@ -216,6 +216,7 @@ exe "hi! link hsStructure PreProc"
 exe "hi! link hsExprKeyword Statement"
 
 autocmd BufRead,BufNewFile *.txt set filetype=doc
+autocmd BufRead,BufNewFile CMakeLists.txt set filetype=cmake
 autocmd FileType c,cpp,haskell,xml :set textwidth=79
 autocmd FileType c,cpp,haskell :set foldlevel=20
 autocmd FileType haskell :syntax sync fromstart
