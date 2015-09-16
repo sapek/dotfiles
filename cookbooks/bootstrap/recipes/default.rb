@@ -66,7 +66,6 @@ end
     vim
     google-chrome-x64
     firefox
-    haskellplatform
     cmake
     doxygen.install
     }
@@ -79,6 +78,12 @@ end
 ###############################################
 # Install software from inet
 ###############################################
+windows_package "Haskell Platform 7.10.2-a" do
+    source 'https://haskell.org/platform/download/7.10.2/HaskellPlatform-7.10.2-a-x86_64-setup.exe'
+    action :install
+    installer_type :nsis
+end
+
 windows_package "Python 2.7.10 (64-bit)" do
     source 'https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64.msi'
     action :install
@@ -102,15 +107,21 @@ windows_package 'LLVM' do
     action :install
 end
 
-windows_package "JetBrains ReSharper Ultimate in Visual Studio 2015" do
-    source 'http://download.jetbrains.com/resharper/JetBrains.ReSharperUltimate.2015.1.2.exe'
-    installer_type :custom
-    options "/VsVersion=12,14 /SpecificProductNames=ReSharper /Silent=True"
-    action :install
+%w{
+    2013
+    2015
+}
+.each do |ver|
+    windows_package "JetBrains ReSharper Ultimate in Visual Studio #{ver}" do
+        source 'http://download.jetbrains.com/resharper/JetBrains.ReSharperUltimate.2015.1.2.exe'
+        installer_type :custom
+        options "/VsVersion=12,14 /SpecificProductNames=ReSharper /Silent=True"
+        action :install
+    end
 end
 
-windows_package 'PuTTY release 0.64' do
-    source 'http://the.earth.li/~sgtatham/putty/latest/x86/putty-0.64-installer.exe'
+windows_package 'PuTTY release 0.65' do
+    source 'http://the.earth.li/~sgtatham/putty/latest/x86/putty-0.65-installer.exe'
     installer_type :inno
     action :install
 end
@@ -121,7 +132,7 @@ end
 }
 .each do |ver|
     windows_package "Boost 1.59 msvc-#{ver}" do
-        source "http://iweb.dl.sourceforge.net/project/boost/boost-binaries/1.59.0/boost_1_59_0-msvc-#{ver}.0-64.exe"
+        source "http://skylineservers.dl.sourceforge.net/project/boost/boost-binaries/1.59.0/boost_1_59_0-msvc-#{ver}.0-64.exe"
         options "/DIR=#{DEV_DRIVE}\\boost_1_59_0"
         not_if {::File.exists?("#{DEV_DRIVE}/boost_1_59_0/lib64-msvc-#{ver}.0/DEPENDENCY_VERSIONS.txt")}
     end
