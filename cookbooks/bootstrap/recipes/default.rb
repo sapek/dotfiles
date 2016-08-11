@@ -106,7 +106,7 @@ end
 .each do |ver|
     windows_package "Boost 1.61 msvc-#{ver}" do
         source "http://heanet.dl.sourceforge.net/project/boost/boost-binaries/1.61.0/boost_1_61_0-msvc-#{ver}.0-64.exe"
-        options "/DIR=#{DEV_DRIVE}\\boost_1_61_0"
+        options "/NOICONS /NORESTART /SUPPRESSMSGBOXES /SP- /VERYSILENT /DIR=#{DEV_DRIVE}\\boost_1_61_0"
         not_if {::File.exists?("#{DEV_DRIVE}/boost_1_61_0/lib64-msvc-#{ver}.0/DEPENDENCY_VERSIONS.txt")}
     end
 end
