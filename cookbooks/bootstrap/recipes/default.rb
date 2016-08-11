@@ -14,7 +14,7 @@ DEV_DRIVE = 'c:'
 windows_package 'Microsoft Visual Studio Enterprise 2015' do
     source "\\\\products\\public\\PRODUCTS\\Developers\\Visual Studio 2015\\Enterprise 2015.3\\vs_enterprise"
     installer_type :custom
-    options "/adminfile \"#{ENV['USERPROFILE']}\\VisualStudio2015Deployment.xml\" /quiet /norestart"
+    options "/adminfile \"#{ENV['USERPROFILE']}\\VisualStudio2015.3Deployment.xml\" /quiet /norestart"
     ignore_failure true
     timeout 1800
     action :install
@@ -59,8 +59,8 @@ end
 ###############################################
 # Install software from inet
 ###############################################
-windows_package "Haskell Platform 8.0.1" do
-    source 'https://haskell.org/platform/download/8.0.1/HaskellPlatform-8.0.1-full-x86_64-setup-a.exe'
+windows_package "Haskell Platform 7.10.2-a" do
+    source 'https://haskell.org/platform/download/7.10.2/HaskellPlatform-7.10.2-a-x86_64-setup.exe'
     action :install
     installer_type :nsis
 end
@@ -80,12 +80,6 @@ windows_zipfile "#{ENV['ProgramFiles(x86)']}/ProcessExplorer" do
     source 'https://download.sysinternals.com/files/ProcessExplorer.zip'
     action :unzip
     not_if {::File.exists?("#{ENV['ProgramFiles(x86)']}/ProcessExplorer/procexp.exe")}
-end
-
-windows_package 'LLVM' do
-    source 'http://llvm.org/releases/3.6.1/LLVM-3.6.1-win32.exe'
-    installer_type :nsis
-    action :install
 end
 
 %w{
