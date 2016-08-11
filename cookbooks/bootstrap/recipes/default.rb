@@ -11,27 +11,8 @@ DEV_DRIVE = 'c:'
 ###############################################
 # Install software from corpnet
 ###############################################
-windows_package 'Microsoft Visual Studio Ultimate 2013' do
-    source "\\\\products\\public\\PRODUCTS\\Developers\\Visual Studio 2013\\Ultimate\\vs_ultimate"
-    installer_type :custom
-    options "/adminfile \"#{ENV['USERPROFILE']}\\VisualStudio2013Deployment.xml\" /quiet /norestart"
-    ignore_failure true
-    timeout 1800
-    action :install
-end
-
-windows_package 'Microsoft Visual Studio 2013 Update 4' do
-    source "\\\\products\\public\\PRODUCTS\\Developers\\Visual Studio 2013\\Visual Studio 2013.4 Patch\\VS2013.4.exe"
-    installer_type :custom
-    options "/quiet /norestart"
-    ignore_failure true
-    timeout 1800
-    not_if {::File.exists?("#{ENV['ProgramFiles(x86)']}/Microsoft SDKs/Portable")}
-    action :install
-end
-
 windows_package 'Microsoft Visual Studio Enterprise 2015' do
-    source "\\\\products\\public\\PRODUCTS\\Developers\\Visual Studio 2015\\Enterprise\\vs_enterprise"
+    source "\\\\products\\public\\PRODUCTS\\Developers\\Visual Studio 2015\\Enterprise 2015.3\\vs_enterprise"
     installer_type :custom
     options "/adminfile \"#{ENV['USERPROFILE']}\\VisualStudio2015Deployment.xml\" /quiet /norestart"
     ignore_failure true
@@ -78,8 +59,8 @@ end
 ###############################################
 # Install software from inet
 ###############################################
-windows_package "Haskell Platform 7.10.2-a" do
-    source 'https://haskell.org/platform/download/7.10.2/HaskellPlatform-7.10.2-a-x86_64-setup.exe'
+windows_package "Haskell Platform 8.0.1" do
+    source 'https://haskell.org/platform/download/8.0.1/HaskellPlatform-8.0.1-full-x86_64-setup-a.exe'
     action :install
     installer_type :nsis
 end
@@ -108,7 +89,6 @@ windows_package 'LLVM' do
 end
 
 %w{
-    2013
     2015
 }
 .each do |ver|
@@ -120,26 +100,25 @@ end
     end
 end
 
-windows_package 'PuTTY release 0.65' do
-    source 'http://the.earth.li/~sgtatham/putty/latest/x86/putty-0.65-installer.exe'
+windows_package 'PuTTY release 0.67' do
+    source 'http://the.earth.li/~sgtatham/putty/latest/x86/putty-0.67-installer.exe'
     installer_type :inno
     action :install
 end
 
 %w{
-    12
     14
 }
 .each do |ver|
-    windows_package "Boost 1.59 msvc-#{ver}" do
-        source "http://skylineservers.dl.sourceforge.net/project/boost/boost-binaries/1.59.0/boost_1_59_0-msvc-#{ver}.0-64.exe"
-        options "/DIR=#{DEV_DRIVE}\\boost_1_59_0"
-        not_if {::File.exists?("#{DEV_DRIVE}/boost_1_59_0/lib64-msvc-#{ver}.0/DEPENDENCY_VERSIONS.txt")}
+    windows_package "Boost 1.61 msvc-#{ver}" do
+        source "http://heanet.dl.sourceforge.net/project/boost/boost-binaries/1.61.0/boost_1_61_0-msvc-#{ver}.0-64.exe"
+        options "/DIR=#{DEV_DRIVE}\\boost_1_61_0"
+        not_if {::File.exists?("#{DEV_DRIVE}/boost_1_61_0/lib64-msvc-#{ver}.0/DEPENDENCY_VERSIONS.txt")}
     end
 end
 
 windows_zipfile "#{SOFTWARE_DRIVE}/tools/cmder" do
-    source 'https://github.com/bliker/cmder/releases/download/v1.2/cmder.zip'
+    source 'https://github.com/cmderdev/cmder/releases/download/v1.3.0-pre/cmder.zip'
     action :unzip
     not_if {::File.exists?("#{SOFTWARE_DRIVE}/tools/cmder/cmder.exe")}
 end
@@ -200,11 +179,11 @@ end
 # Set environment variables
 ###############################################
 env 'BOOST_ROOT' do
-    value "#{DEV_DRIVE}/boost_1_59_0"
+    value "#{DEV_DRIVE}/boost_1_61_0"
 end
 
 env 'BOOST_LIBRARYDIR' do
-    value "#{DEV_DRIVE}/boost_1_59_0/lib64-msvc-12.0;#{DEV_DRIVE}/boost_1_59_0/lib64-msvc-14.0"
+    value "#{DEV_DRIVE}/boost_1_61_0/lib64-msvc-12.0;#{DEV_DRIVE}/boost_1_61_0/lib64-msvc-14.0"
 end
 
 env 'PreferredToolArchitecture' do
