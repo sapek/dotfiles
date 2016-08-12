@@ -12,7 +12,7 @@ DEV_DRIVE = 'c:'
 # Install software from corpnet
 ###############################################
 package 'Microsoft Visual Studio Enterprise 2015' do
-    source "\\\\products\\public\\PRODUCTS\\Developers\\Visual Studio 2015\\Enterprise 2015.3\\vs_enterprise"
+    source "\\\\products\\public\\PRODUCTS\\Developers\\Visual Studio 2015\\Enterprise 2015.3\\vs_enterprise.exe"
     installer_type :custom
     options "/adminfile \"#{ENV['USERPROFILE']}\\VisualStudio2015.3Deployment.xml\" /quiet /norestart"
     ignore_failure true
