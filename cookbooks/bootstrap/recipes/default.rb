@@ -267,6 +267,11 @@ execute 'High performance power scheme' do
     command 'powercfg -setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c'
 end
 
+execute 'Putty sessions' do
+    command "regedit /s \"#{ENV['USERPROFILE']}\\putty.reg"
+    not_if {registry_key_exists?('HKEY_CURRENT_USER\SOFTWARE\SimonTatham\PuTTY\Sessions\sapek.com')} 
+end
+
 # Chrome extensions
 extensions = [
     'cjpalhdlnbpafiamejdnhcphjbkeiagm', # uBlock
