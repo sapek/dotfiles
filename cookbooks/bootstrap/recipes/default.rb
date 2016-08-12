@@ -139,7 +139,6 @@ end
 
 %w{
     pointfree
-    pandoc
 }
 .each do |package|
     powershell_script package do
