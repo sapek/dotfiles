@@ -11,7 +11,7 @@ DEV_DRIVE = 'c:'
 ###############################################
 # Install software from corpnet
 ###############################################
-windows_package 'Microsoft Visual Studio Enterprise 2015' do
+package 'Microsoft Visual Studio Enterprise 2015' do
     source "\\\\products\\public\\PRODUCTS\\Developers\\Visual Studio 2015\\Enterprise 2015.3\\vs_enterprise"
     installer_type :custom
     options "/adminfile \"#{ENV['USERPROFILE']}\\VisualStudio2015.3Deployment.xml\" /quiet /norestart"
@@ -20,7 +20,7 @@ windows_package 'Microsoft Visual Studio Enterprise 2015' do
     action :install
 end
 
-windows_package 'Odd' do
+package 'Odd' do
     source '\\\\tkfiltoolbox\\tools\\23785\\2.7.3.5\\msi\\Odd.msi'
     action :install
     ignore_failure true
@@ -59,13 +59,13 @@ end
 ###############################################
 # Install software from inet
 ###############################################
-windows_package "Haskell Platform 7.10.2-a" do
+package "Haskell Platform 7.10.2-a" do
     source 'https://haskell.org/platform/download/7.10.2/HaskellPlatform-7.10.2-a-x86_64-setup.exe'
     action :install
     installer_type :nsis
 end
 
-windows_package "Python 2.7.10 (64-bit)" do
+package "Python 2.7.10 (64-bit)" do
     source 'https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64.msi'
     action :install
 end
@@ -86,7 +86,7 @@ end
     2015
 }
 .each do |ver|
-    windows_package "JetBrains ReSharper Ultimate in Visual Studio #{ver}" do
+    package "JetBrains ReSharper Ultimate in Visual Studio #{ver}" do
         source 'http://download.jetbrains.com/resharper/JetBrains.ReSharperUltimate.2015.1.2.exe'
         installer_type :custom
         options "/VsVersion=12,14 /SpecificProductNames=ReSharper /Silent=True"
@@ -94,7 +94,7 @@ end
     end
 end
 
-windows_package 'PuTTY release 0.67' do
+package 'PuTTY release 0.67' do
     source 'http://the.earth.li/~sgtatham/putty/latest/x86/putty-0.67-installer.exe'
     installer_type :inno
     action :install
@@ -104,7 +104,7 @@ end
     14
 }
 .each do |ver|
-    windows_package "Boost 1.61 msvc-#{ver}" do
+    package "Boost 1.61 msvc-#{ver}" do
         source "http://heanet.dl.sourceforge.net/project/boost/boost-binaries/1.61.0/boost_1_61_0-msvc-#{ver}.0-64.exe"
         options "/NOICONS /NORESTART /SUPPRESSMSGBOXES /SP- /VERYSILENT /DIR=#{DEV_DRIVE}\\boost_1_61_0"
         not_if {::File.exists?("#{DEV_DRIVE}/boost_1_61_0/lib64-msvc-#{ver}.0/DEPENDENCY_VERSIONS.txt")}
