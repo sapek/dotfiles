@@ -21,6 +21,4 @@ git checkout --track origin/master
 git submodule init
 git submodule update
 
-# Apply the Chef recipe bootstrap
-chef-client --local-mode --runlist 'recipe[bootstrap]'
-
+cook.cmd
