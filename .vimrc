@@ -73,11 +73,6 @@ else
     set listchars=tab:>-,trail:.
 endif
 
-let Tlist_GainFocus_On_ToggleOpen=1
-let Tlist_File_Fold_Auto_Close=1
-let Tlist_Process_File_Always=1
-map <silent> <F2> :TlistToggle<CR>
-
 let OmniCpp_MayCompleteDot = 1      " auto-complete with .
 let OmniCpp_MayCompleteArrow = 1    " auto-complete with ->
 let OmniCpp_MayCompleteScope = 1    " auto-complete with ::
@@ -102,12 +97,12 @@ if &term == "xterm"
     set mouse=a
 endif
 
-colorscheme adamsap
+" colorscheme adamsap
 
 " command completion a la shell
 set wildmode=list:longest
 " ignore files with these extensions in command completion
-set wildignore=*.o,*.obj
+set wildignore=*.o,*.obj,*.exe,*.bin
 
 " start scrolling 3 lines from the bottom
 set scrolloff=3
@@ -139,8 +134,8 @@ nnoremap gf <c-w>gf
 
 " map F1 to help for word under cursor
 map <silent> <F1> "zyiw:exe "h ".@z.""<CR>
-map <silent> [Z :tabprev<CR>
-map <silent> <F3> :NERDTreeToggle<CR>
+" map <silent> [Z :tabprev<CR>
+" map <silent> <F3> :NERDTreeToggle<CR>
 
 " map F4 and Shift-F4 to next/previous compilation error
 map <silent> <F4> :cn<CR>
