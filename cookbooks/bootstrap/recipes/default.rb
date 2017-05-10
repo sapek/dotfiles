@@ -131,7 +131,6 @@ end
 ###############################################
 powershell_script "cabal update" do
     code <<-EOH
-    $env:HTTP_PROXY = "http://itgproxy"
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
     cabal update
     EOH
@@ -143,7 +142,6 @@ end
 .each do |package|
     powershell_script package do
         code <<-EOH
-        $env:HTTP_PROXY = "http://itgproxy"
         $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
         cabal install --jobs #{package}
         EOH
@@ -181,10 +179,6 @@ end
 
 env 'PreferredToolArchitecture' do
     value 'x64'
-end
-
-env 'HTTP_PROXY' do
-    value 'http://itgproxy'
 end
 
 ###############################################
