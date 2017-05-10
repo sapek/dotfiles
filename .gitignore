@@ -16,7 +16,6 @@ Videos/
 _viminfo
 ntuser.*
 vimfiles/
-.vim/sessions
 .ssh
 .vim-fuf-data
 *.swp

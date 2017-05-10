@@ -21,6 +21,7 @@
 
 [alias]
 	diffall = difftool --extcmd=odd.exe --dir-diff
+	tree = log --graph --decorate --pretty=oneline --abbrev-commit
 
 [core]
 	autocrlf = true
