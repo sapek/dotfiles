@@ -8,7 +8,7 @@
 SOFTWARE_DRIVE = "#{ENV['SYSTEMDRIVE']}"
 DEV_DRIVE = 'c:'
 
-###############################################
+###############################################http://the.earth.li/~sgtatham/putty/latest/x86/putty-0.67-installer.exeyy
 # Install software from corpnet
 ###############################################
 package 'Microsoft Visual Studio Enterprise 2015' do
@@ -95,7 +95,7 @@ end
 end
 
 package 'PuTTY release 0.67' do
-    source 'http://the.earth.li/~sgtatham/putty/latest/x86/putty-0.67-installer.exe'
+    source 'http://the.earth.li/~sgtatham/putty/latest/x86/putty-0.69-installer.exe'
     installer_type :inno
     action :install
 end
