@@ -142,6 +142,7 @@ end
 .each do |package|
     powershell_script package do
         code <<-EOH
+        $env:HTTP_PROXY = "http://itgproxy:80"
         $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
         cabal install --jobs #{package}
         EOH
