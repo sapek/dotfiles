@@ -171,11 +171,11 @@ end
 # Set environment variables
 ###############################################
 env 'BOOST_ROOT' do
-    value "#{DEV_DRIVE}/boost_1_61_0"
+    value "#{DEV_DRIVE}/boost_1_64_0"
 end
 
 env 'BOOST_LIBRARYDIR' do
-    value "#{DEV_DRIVE}/boost_1_61_0/lib64-msvc-12.0;#{DEV_DRIVE}/boost_1_61_0/lib64-msvc-14.0"
+    value "#{DEV_DRIVE}/boost_1_64_0/lib64-msvc-12.0;#{DEV_DRIVE}/boost_1_64_0/lib64-msvc-14.0"
 end
 
 env 'PreferredToolArchitecture' do
@@ -186,7 +186,7 @@ end
 # Update PATH
 ###############################################
 PATH = [
-    "#{ENV['ProgramFiles(x86)']}/CMake/bin",
+    "#{ENV['ProgramFiles']}/CMake/bin",
     "#{SOFTWARE_DRIVE}/Python27",
 ]
 
