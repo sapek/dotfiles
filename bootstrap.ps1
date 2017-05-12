@@ -21,4 +21,4 @@ git checkout --track origin/master
 git submodule init
 git submodule update
 
-cook.cmd
+Invoke-Item cook.cmd
