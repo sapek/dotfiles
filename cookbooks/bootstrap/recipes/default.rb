@@ -163,7 +163,7 @@ end
 }
 .each do |dictionary|
     link "#{ENV['USERPROFILE']}/.vim/spell/#{dictionary}" do
-        to "#{ENV['ProgramFiles(x86)']}/vim/vim74/spell/#{dictionary}"
+        to "#{ENV['ProgramFiles(x86)']}/vim/vim80/spell/#{dictionary}"
     end
 end
 
