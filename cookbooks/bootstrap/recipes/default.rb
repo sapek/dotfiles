@@ -104,10 +104,10 @@ end
     14
 }
 .each do |ver|
-    package "Boost 1.61 msvc-#{ver}" do
-        source "http://heanet.dl.sourceforge.net/project/boost/boost-binaries/1.61.0/boost_1_61_0-msvc-#{ver}.0-64.exe"
-        options "/NOICONS /NORESTART /SUPPRESSMSGBOXES /SP- /VERYSILENT /DIR=#{DEV_DRIVE}\\boost_1_61_0"
-        not_if {::File.exists?("#{DEV_DRIVE}/boost_1_61_0/lib64-msvc-#{ver}.0/DEPENDENCY_VERSIONS.txt")}
+    package "Boost 1.64 msvc-#{ver}" do
+        source "http://iweb.dl.sourceforge.net/project/boost/boost-binaries/1.64.0/boost_1_64_0-msvc-#{ver}.1-64.exe"
+        options "/NOICONS /NORESTART /SUPPRESSMSGBOXES /SP- /VERYSILENT /DIR=#{DEV_DRIVE}\\boost_1_64_0"
+        not_if {::File.exists?("#{DEV_DRIVE}/boost_1_64_0/lib64-msvc-#{ver}.1/DEPENDENCY_VERSIONS.txt")}
     end
 end
 
