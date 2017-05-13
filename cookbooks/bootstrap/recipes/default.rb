@@ -70,6 +70,11 @@ package "Python 2.7.10 (64-bit)" do
     action :install
 end
 
+package "Microsoft Git Credential Manager for Windows 1.10.0" do
+    source "https://github.com/Microsoft/Git-Credential-Manager-for-Windows/releases/download/v1.10.0/GCMW-1.10.0.exe"
+    action :install
+end
+
 windows_zipfile "#{SOFTWARE_DRIVE}/Python27/symbols" do
     source 'https://www.python.org/ftp/python/2.7.10/python-2.7.10.amd64-pdb.zip'
     action :unzip
@@ -131,6 +136,7 @@ end
 ###############################################
 powershell_script "cabal update" do
     code <<-EOH
+    $env:HTTP_PROXY = "http://itgproxy:80"
     $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
     cabal update
     EOH
