@@ -1,0 +1,76 @@
+let SessionLoad = 1
+if &cp | set nocp | endif
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+let v:this_session=expand("<sfile>:p")
+silent only
+cd E:\malibu
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+set shortmess=aoO
+badd +36 src\Hw\Apps\HelloBond\RTL\BondRequestSubmessage.sv
+badd +1 src\Hw\Apps\HelloBond\RTL\KswStub.sv
+badd +1 src\Hw\Apps\HelloBond\RTL\Role.sv
+badd +1 src\hw\Apps\HelloBond\RTL\app.tcl
+badd +135 src\Hw\Apps\Alignment\Schemas\Malibu.bond
+badd +1 src\Builds\HelloBond\common.bond.props
+badd +1 src\Builds\HelloBond\SmokeTest\SmokeTest.proj
+badd +17 src\Builds\HelloBond\PikesPeak\Project.tcl
+badd +124 .corext\corext.config
+badd +51 src\Hw\Apps\Alignment\Schemas\nuget\publish.cmd
+badd +1 src\Hw\Apps\Alignment\Schemas\nuget\Malibu.Schema.nuspec
+badd +2 src\Hw\Apps\HelloBond\RTL\BondHaasTypes.sv
+badd +6 src\Hw\Apps\HelloBond\RTL\BondResponseSubmessage.sv
+badd +76 src\Hw\Apps\HelloBond\RTL\MalibuTop.sv
+badd +0 src\Hw\Apps\HelloBond\RTL\Haas.sv
+argglobal
+silent! argdel *
+argadd src\Hw\Apps\HelloBond\RTL\BondRequestSubmessage.sv
+argadd src\Hw\Apps\HelloBond\RTL\Haas.sv
+argadd src\Hw\Apps\HelloBond\RTL\KswStub.sv
+argadd src\Hw\Apps\HelloBond\RTL\MessageProcessing.sv
+argadd src\Hw\Apps\HelloBond\RTL\Role.sv
+argadd src\hw\Apps\HelloBond\RTL\app.tcl
+argadd src\Hw\Apps\Alignment\Schemas\Malibu.bond
+argadd src\Builds\HelloBond\common.bond.props
+argadd src\Builds\HelloBond\SmokeTest\SmokeTest.proj
+set lines=82 columns=221
+winpos 1269 19
+edit src\Hw\Apps\HelloBond\RTL\KswStub.sv
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winheight=1 winwidth=1
+argglobal
+edit src\Hw\Apps\HelloBond\RTL\KswStub.sv
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 1 - ((0 * winheight(0) + 39) / 79)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 0
+lcd E:\malibu
+tabnext 1
+if exists('s:wipebuf')
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20 shortmess=filnxtToO
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if file_readable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :

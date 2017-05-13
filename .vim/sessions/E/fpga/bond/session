@@ -1,0 +1,114 @@
+let SessionLoad = 1
+if &cp | set nocp | endif
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+let v:this_session=expand("<sfile>:p")
+silent only
+cd E:\fpga\bond
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+set shortmess=aoO
+badd +63 bond.sv
+badd +1 compact_binary.sv
+badd +33 fast_binary.sv
+badd +1 input_stream.sv
+badd +1 output_stream.sv
+badd +1 protocol_writer.sv
+badd +11 schema.sv
+badd +1 simple_binary.sv
+badd +88 tagged_parser.sv
+badd +223 tagged_reader.sv
+badd +108 TopEntity.sv
+badd +85 varint.sv
+badd +1 zigzag.sv
+badd +232 tests\compact_binary_tb.sv
+badd +188 tests\fast_binary_tb.sv
+badd +1 tests\initializers.sv
+badd +264 tests\input_stream_tb.sv
+badd +1 tests\output_stream_tb.sv
+badd +120 tests\reader_errors_tb.sv
+badd +1 tests\simple_binary_tb.sv
+badd +118 tests\testbench.sv
+badd +156 tests\transcoding_tb.sv
+badd +1 tests\varint_tb.sv
+badd +17 sim\sim.cmd
+badd +6 sim\sim.tcl
+badd +14 build.cmd
+badd +1 Project.sdc
+badd +1 Project.qsf
+badd +48 tests\schema_tb.sv
+badd +16 fpga.bond
+badd +6 examples\arbitrary_bit_width.bond
+badd +25 examples\time_multiplex.sv
+badd +59 examples\tests\tagged_serializer_tb.sv
+badd +95 examples\tests\time_multiplex_tb.sv
+argglobal
+silent! argdel *
+$argadd bond.sv
+$argadd build.cmd
+$argadd sim\sim.tcl
+$argadd sim\sim.cmd
+$argadd tests\varint_tb.sv
+$argadd tests\transcoding_tb.sv
+$argadd tests\testbench.sv
+$argadd tests\simple_binary_tb.sv
+$argadd tests\schema_tb.sv
+$argadd tests\reader_errors_tb.sv
+$argadd tests\output_stream_tb.sv
+$argadd tests\input_stream_tb.sv
+$argadd tests\initializers.sv
+$argadd tests\fast_binary_tb.sv
+$argadd tests\compact_binary_tb.sv
+$argadd zigzag.sv
+$argadd varint.sv
+$argadd TopEntity.sv
+$argadd tagged_reader.sv
+$argadd tagged_parser.sv
+$argadd simple_binary.sv
+$argadd schema.sv
+$argadd protocol_writer.sv
+$argadd output_stream.sv
+$argadd input_stream.sv
+$argadd fast_binary.sv
+$argadd compact_binary.sv
+set lines=63 columns=184
+winpos 177 286
+edit schema.sv
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+argglobal
+edit schema.sv
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 146 - ((17 * winheight(0) + 30) / 60)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+146
+normal! 09|
+lcd E:\fpga\bond
+tabnext 1
+if exists('s:wipebuf')
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20 shortmess=aoO
+set winminheight=1 winminwidth=1
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if file_readable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :

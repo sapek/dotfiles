@@ -1,0 +1,63 @@
+let SessionLoad = 1
+if &cp | set nocp | endif
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+let v:this_session=expand("<sfile>:p")
+silent only
+cd E:\malibu\src\Hw\Apps\Alignment
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+set shortmess=aoO
+badd +174 Schemas\Malibu.bond
+badd +271 RTL\MalibuTop.sv
+badd +145 RTL\Kernels.sv
+badd +742 RTL\MessageProcessing\MessageProcessing.sv
+badd +1 RTL\MessageProcessing\BondHaasTypes.sv
+badd +402 RTL\KswSerial\KswSerialTop.sv
+badd +7 RTL\KswSerial\KswLib.sv
+argglobal
+silent! argdel *
+argadd Schemas\Malibu.bond
+argadd RTL\MalibuTop.sv
+argadd RTL\Kernels.sv
+argadd RTL\MessageProcessing\MessageProcessing.sv
+argadd RTL\MessageProcessing\BondHaasTypes.sv
+set lines=52 columns=182
+winpos -8 0
+edit RTL\MessageProcessing\MessageProcessing.sv
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winheight=1 winwidth=1
+argglobal
+edit RTL\MessageProcessing\MessageProcessing.sv
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 328 - ((3 * winheight(0) + 24) / 49)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+328
+normal! 059|
+tabnext 1
+if exists('s:wipebuf')
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20 shortmess=filnxtToO
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if file_readable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :
