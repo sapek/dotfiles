@@ -15,6 +15,7 @@ Searches/
 Videos/
 _viminfo
 ntuser.*
+vimfiles
 vimfiles/
 .ssh
 .vim-fuf-data
@@ -24,3 +25,5 @@ vimfiles/
 nodes
 .gem
 .config
+.vim/sessions/
+.viminfo
