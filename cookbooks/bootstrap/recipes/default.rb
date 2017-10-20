@@ -117,13 +117,17 @@ end
 end
 
 windows_zipfile "#{SOFTWARE_DRIVE}/tools/cmder" do
-    source 'https://github.com/cmderdev/cmder/releases/download/v1.3.0-pre/cmder.zip'
+    source 'https://github.com/cmderdev/cmder/releases/download/v1.3.2/cmder.zip'
     action :unzip
     not_if {::File.exists?("#{SOFTWARE_DRIVE}/tools/cmder/cmder.exe")}
 end
 
 link "#{SOFTWARE_DRIVE}/tools/cmder/config/ConEmu.xml" do
     to "#{ENV['USERPROFILE']}/ConEmu.xml"
+end
+
+link "#{SOFTWARE_DRIVE}/tools/cmder/config/prompt.lua" do
+    to "#{ENV['USERPROFILE']}/prompt.lua"
 end
 
 link "#{ENV['USERPROFILE']}/vimfiles" do
