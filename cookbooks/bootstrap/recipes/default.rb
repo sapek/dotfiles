@@ -126,6 +126,10 @@ link "#{SOFTWARE_DRIVE}/tools/cmder/config/ConEmu.xml" do
     to "#{ENV['USERPROFILE']}/ConEmu.xml"
 end
 
+link "#{SOFTWARE_DRIVE}/tools/cmder/vendor/conemu-maximus5/ConEmu.xml" do
+    to "#{ENV['USERPROFILE']}/ConEmu.xml"
+end
+
 link "#{SOFTWARE_DRIVE}/tools/cmder/config/prompt.lua" do
     to "#{ENV['USERPROFILE']}/prompt.lua"
 end
