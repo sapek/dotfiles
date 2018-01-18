@@ -42,11 +42,11 @@ syn keyword bondInclude import
 syn keyword bondValues nothing true false
 syn keyword bondKeyword optional required required_optional
 syn keyword bondStatement using
-syn keyword bondBasicTypes bool string wstring blob
+syn keyword bondBasicTypes bool string wstring blob void
 syn keyword bondBasicTypes int8 int16 int32 int64 
 syn keyword bondBasicTypes uint8 uint16 uint32 uint64 float double
 syn keyword bondType map list set vector bonded nullable
-syn keyword bondClass struct enum
+syn keyword bondClass service view_of struct enum
 syn region  bondString start=+"+ end=+"+
 syn region  bondAttributeVal start=+"+ end=+"+ contained
 syn region bondAttribute start="\[" end="\]" contains=bondAttributeName,bondAttributeVal
