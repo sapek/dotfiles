@@ -19,7 +19,7 @@ function prompt_to_bottom()
     -- build our own prompt
     -- orig: $E[1;32;40m$P$S{git}{hg}$S$_$E[1;30;40m{lamb}$S$E[0m
     -- color codes: "\x1b[1;37;40m"
-    local cmder_prompt = "\x1b[9999E\x1b[1;32;40m{cwd} {git}{hg} \n\x1b[1;30;40m{lamb} \x1b[0m"
+    local cmder_prompt = "\x1b[9999E\x1b[1;32;40m{cwd} {git}{hg} \n\x1b[1;30;40m{lamb} \x1b[1;37;40m"
     cmder_prompt = string.gsub(cmder_prompt, "{cwd}", cwd)
     if env == nil then
         lambda = "λ"
