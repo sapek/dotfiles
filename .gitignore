@@ -28,3 +28,11 @@ nodes
 .config
 .vim/sessions/
 .viminfo
+.dotnet/
+.nuget/
+CMakeBuilds/
+IntelGraphicsProfiles/
+quartus2.ini
+quartus2.qreg
+source/
+
