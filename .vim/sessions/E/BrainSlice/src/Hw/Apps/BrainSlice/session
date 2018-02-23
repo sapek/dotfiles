@@ -1,0 +1,69 @@
+let SessionLoad = 1
+if &cp | set nocp | endif
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+let v:this_session=expand("<sfile>:p")
+silent only
+cd E:\BrainSlice\src\Hw\Apps\BrainSlice
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+set shortmess=aoO
+badd +268 RTL\MessageProcessing\OutputMessageProcessor.sv
+badd +493 RTL\BrainSliceTop.sv
+badd +24 RTL\Role.sv
+badd +740 RTL\MessageProcessing\InputMessageProcessor.sv
+badd +84 Schemas\CommonFunctions.bond
+badd +157 Schemas\BrainSlice.bond
+badd +4 RTL\BrainSliceTelemetry.sv
+badd +8 Schemas\bond.schema.codegen.rtl.targets
+badd +20 Schemas\bond.codegen.props
+badd +41 Schemas\ISA.bond
+badd +1 c:\nuget\Catapult.HaaS.Rtl.0.4.5-dev0003\HaaS.bond
+badd +42 Schemas\NfuTest.bond
+badd +30 Schemas\Parameters.bond
+badd +8 Schemas\bond.schema.codegen.cpp.targets
+badd +7 Schemas\bond.schema.codegen.firmware.targets
+badd +1 RTL\MessageProcessing\BrainSlice_pkg.sv
+argglobal
+silent! argdel *
+$argadd RTL\MessageProcessing\OutputMessageProcessor.sv
+set lines=68 columns=288
+winpos 435 123
+edit RTL\MessageProcessing\BrainSlice_pkg.sv
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+argglobal
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 1 - ((0 * winheight(0) + 32) / 65)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 0
+lcd E:\BrainSlice\src\Hw\Apps\BrainSlice
+tabnext 1
+if exists('s:wipebuf')
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20 shortmess=aoO
+set winminheight=1 winminwidth=1
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if file_readable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :

@@ -1,0 +1,93 @@
+let SessionLoad = 1
+if &cp | set nocp | endif
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+let v:this_session=expand("<sfile>:p")
+silent only
+cd E:\fpga\codegen
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+set shortmess=aoO
+badd +52 IO.hs
+badd +63 Main.hs
+badd +58 Options.hs
+badd +1 SchemaDef.hs
+badd +36 Types_mif.hs
+badd +450 Types_sv.hs
+badd +97 Util.hs
+badd +1 tests\Main.hs
+badd +67 msbuild\Bond.Fpga.Codegen.targets
+badd +46 tests\Tests\Codegen.hs
+badd +126 TypeMapping.hs
+badd +5 tests\schema\service.bond
+badd +109 Firmware_h.hs
+badd +53 msbuild\Bond.BrainSlice.Codegen.targets
+badd +109 Mif.hs
+badd +17 Firmware_mif.hs
+badd +1 tests\schema\import.bond
+badd +19 tests\schema\alias.bond
+badd +1 SystemVerilog.hs
+badd +3 tests\schema\service_inheritance.bond
+badd +79 Types_c_h.hs
+badd +40 tests\schema\structs.bond
+badd +24 tests\schema\nothing.bond
+badd +5 tests\schema\containers.bond
+badd +66 Client_h.hs
+badd +140 Tensor.hs
+badd +195 \oss\bond\compiler\src\Language\Bond\Parser.hs
+badd +18 ClientUtil.hs
+badd +1 Client_c_h.hs
+badd +41 tests\schema\tensors.bond
+badd +13 Client_cpp.hs
+badd +17 tests\schema\enums.bond
+argglobal
+silent! argdel *
+$argadd IO.hs
+$argadd Main.hs
+$argadd Options.hs
+$argadd SchemaDef.hs
+$argadd SystemVerilog.hs
+$argadd Types_mif.hs
+$argadd Types_sv.hs
+$argadd Util.hs
+$argadd tests\Main.hs
+set lines=52 columns=182
+winpos -10 0
+edit Types_sv.hs
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+argglobal
+edit Types_sv.hs
+setlocal fdm=syntax
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=20
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+let s:l = 450 - ((24 * winheight(0) + 24) / 49)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+450
+normal! 0
+lcd E:\fpga\codegen
+tabnext 1
+if exists('s:wipebuf')
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20 shortmess=filnxtToO
+set winminheight=1 winminwidth=1
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if file_readable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :

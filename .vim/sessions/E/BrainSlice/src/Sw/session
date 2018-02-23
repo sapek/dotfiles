@@ -1,0 +1,121 @@
+let SessionLoad = 1
+if &cp | set nocp | endif
+let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
+let v:this_session=expand("<sfile>:p")
+silent only
+cd E:\BrainSlice\src\Sw
+if expand('%') == '' && !&modified && line('$') <= 1 && getline(1) == ''
+  let s:wipebuf = bufnr('%')
+endif
+set shortmess=aoO
+badd +1 BrainSliceCommon\BrainSliceCommon.h
+badd +1 BrainSliceCommon\BrainSliceCommonTests.h
+badd +6 BrainSliceCommon\InstructionGenerator.h
+badd +1 BrainSliceCommon\NfuTests.h
+badd +103 BrainSliceCommon\BrainSliceCommonImpl.cpp
+badd +995 BrainSliceCommon\BrainSliceCommonTests.cpp
+badd +73 BrainSliceCommon\InstructionGenerator.cpp
+badd +39 BrainSliceCommon\NfuTests.cpp
+badd +36 BrainSliceCore\BrainSliceCore.h
+badd +1 BrainSliceCore\BrainSliceDirectHandle.h
+badd +96 BrainSliceCore\BrainSliceHandle.h
+badd +37 BrainSliceCore\BrainSliceHandleImpl.h
+badd +28 BrainSliceCore\BrainSliceLoader.h
+badd +5 BrainSliceCore\BrainSliceUtil.h
+badd +1 BrainSliceCore\FixedBuffer.h
+badd +31 BrainSliceCore\StructLayout.h
+badd +25 BrainSliceEmulatorLib\BrainSliceEmulator.h
+badd +1 BrainSliceEmulatorLib\BrainSliceEmulatorHandle.h
+badd +48 BrainSliceEmulatorLib\BrainSliceTensorOp.h
+badd +1 BrainSliceEmulatorLib\Utils.h
+badd +160 BrainSliceEmulatorLib\BrainSliceEmulatorHandle.cpp
+badd +152 BrainSliceEmulatorLib\BrainSliceEmulatorImpl.cpp
+badd +361 BrainSliceEmulatorLib\BrainSliceTensorOp.cpp
+badd +400 TestClient\main.cpp
+badd +22 BrainSliceCore\BrainSliceDirectHandle.cpp
+badd +16 BrainSliceCore\BrainSliceLoader.cpp
+badd +131 TestClient\TestClient.vcxproj
+badd +5 TestClient\TestClient.rc
+badd +4 TestClient\resource.h
+badd +8 BrainSliceTuring\BrainSliceTuringImpl.cpp
+badd +95 BrainSliceCore\BrainSliceCoreImpl.cpp
+badd +7 BrainSliceCommon\BrainSliceCommon.vcxproj
+badd +53 BrainSliceCore\BrainSliceCore.vcxproj
+badd +7 BrainSliceTuring\BrainSliceTuring.vcxproj
+badd +7 Seq2Seq\Seq2Seq.vcxproj
+badd +108 BrainSliceEmulatorLib\Build\BrainSliceEmulatorLib.vcxproj
+badd +7 BrainSliceLoader\BrainSliceLoader.vcxproj
+badd +6 BrainSliceEmulatorLib\UnitTests\UnitTests.vcxproj
+badd +30 BrainSliceCore\HexException.h
+badd +179 BrainSliceCore\BrainSliceUtil.cpp
+badd +38 BrainSliceCore\HexException.cpp
+badd +106 BrainSliceCore\BrainSliceFpgaHandle.cpp
+badd +263 Seq2Seq\Seq2SeqClient.cpp
+badd +178 BrainWaveDLL\BrainWaveDLL.cpp
+argglobal
+silent! argdel *
+$argadd BrainSliceCommon\BrainSliceCommon.h
+$argadd BrainSliceCommon\BrainSliceCommonTests.h
+$argadd BrainSliceCommon\InstructionGenerator.h
+$argadd BrainSliceCommon\NfuTests.h
+$argadd BrainSliceCommon\BrainSliceCommonImpl.cpp
+$argadd BrainSliceCommon\BrainSliceCommonTests.cpp
+$argadd BrainSliceCommon\InstructionGenerator.cpp
+$argadd BrainSliceCommon\NfuTests.cpp
+$argadd BrainSliceCore\BrainSliceCore.h
+$argadd BrainSliceCore\BrainSliceDirectHandle.h
+$argadd BrainSliceCore\BrainSliceHandle.h
+$argadd BrainSliceCore\BrainSliceHandleImpl.h
+$argadd BrainSliceCore\BrainSliceLoader.h
+$argadd BrainSliceCore\BrainSliceUtil.h
+$argadd BrainSliceCore\FixedBuffer.h
+$argadd BrainSliceCore\StructLayout.h
+$argadd BrainSliceEmulatorLib\BrainSliceEmulator.h
+$argadd BrainSliceEmulatorLib\BrainSliceEmulatorHandle.h
+$argadd BrainSliceEmulatorLib\BrainSliceTensorOp.h
+$argadd BrainSliceEmulatorLib\Utils.h
+$argadd BrainSliceEmulatorLib\BrainSliceEmulatorHandle.cpp
+$argadd BrainSliceEmulatorLib\BrainSliceEmulatorImpl.cpp
+$argadd BrainSliceEmulatorLib\BrainSliceTensorOp.cpp
+$argadd TestClient\main.cpp
+set lines=41 columns=134
+winpos -11 22
+edit BrainSliceCommon\BrainSliceCommonImpl.cpp
+set splitbelow splitright
+set nosplitbelow
+set nosplitright
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+argglobal
+edit BrainSliceCommon\BrainSliceCommonImpl.cpp
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=20
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let s:l = 251 - ((34 * winheight(0) + 19) / 38)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+251
+normal! 017|
+lcd E:\BrainSlice\src\Sw
+tabnext 1
+if exists('s:wipebuf')
+  silent exe 'bwipe ' . s:wipebuf
+endif
+unlet! s:wipebuf
+set winheight=1 winwidth=20 shortmess=filnxtToO
+set winminheight=1 winminwidth=1
+let s:sx = expand("<sfile>:p:r")."x.vim"
+if file_readable(s:sx)
+  exe "source " . fnameescape(s:sx)
+endif
+let &so = s:so_save | let &siso = s:siso_save
+doautoall SessionLoadPost
+unlet SessionLoad
+" vim: set ft=vim :
