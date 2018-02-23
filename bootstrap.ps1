@@ -21,4 +21,4 @@ git checkout --track origin/master
 git submodule init
 git submodule update
 
-Invoke-Item cook.cmd
+echo Run cook.cmd or cook-base.cmd to apply Chef recipes
