@@ -6,7 +6,7 @@ iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.p
 
 # Install Git and Chef
 choco install git.install -version 2.16.2 -y
-choco install chef-client -y
+choco install chef-client -version 12.14.77 -y
 
 # Refresh Path
 $env:Path = [System.Environment]::GetEnvironmentVariable("Path","Machine")
