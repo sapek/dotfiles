@@ -21,4 +21,4 @@ git checkout --track origin/master
 git submodule init
 git submodule update
 
-echo Run cook.cmd or cook-base.cmd to apply Chef recipes
+Write-Host "Run cook.cmd or cook-base.cmd to apply Chef recipes"
