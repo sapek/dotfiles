@@ -5,7 +5,7 @@
 iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))
 
 # Install Git and Chef
-choco install git.install -version 1.9.5.20150114 -y
+choco install git.install -version 2.16.2 -y
 choco install chef-client -y
 
 # Refresh Path
