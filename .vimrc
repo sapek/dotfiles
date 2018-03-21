@@ -217,6 +217,7 @@ autocmd FileType c,cpp,haskell :set foldlevel=20
 autocmd FileType haskell :syntax sync fromstart
 autocmd FileType gitcommit,pandoc,doc :set nocindent
 autocmd FileType gitcommit set tw=72
+autocmd FileType xml set tabstop=2
 autocmd FileType pandoc,doc :set autoindent
 autocmd FileType pandoc,doc :set spell
 " autocmd FileType pandoc,doc :set fo-=w
