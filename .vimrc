@@ -97,8 +97,6 @@ if &term == "xterm"
     set mouse=a
 endif
 
-" colorscheme adamsap
-
 " command completion a la shell
 set wildmode=list:longest
 " ignore files with these extensions in command completion
