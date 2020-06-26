@@ -38,3 +38,9 @@
 	autocrlf = true
 [credential]
 	helper = manager
+
+[merge]
+    tool = bc3
+
+[mergetool "bc3"]
+    path = c:/Program Files/Beyond Compare 4/bcomp.exe
