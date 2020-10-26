@@ -50,29 +50,6 @@ set ts=4
 set virtualedit=all
 set diffopt+=iwhite
 
-if has("gui_macvim")
-    " show tabs and trailing white spaces
-    set listchars=tab:» ,trail:∙
-else
-    if &term == "win32"
-        let Tlist_Ctags_Cmd='"C:\Program Files (x86)\Vim\ctags"'
-        " clear search highlight with Esc (doesn't work in iTerm so setting only
-        " for Windows terminal)
-        nmap <silent> <Esc> :noh<CR>
-        " cursor keys for the terminal on Windows
-        " source ~/.win32/.vimwin32
-    else
-        let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
-        " cursor keys for the terminal
-        set t_ku=OA
-        set t_kd=OB
-        set t_kl=OD
-        set t_kr=OC
-    endif
-    " show tabs and trailing white spaces
-    set listchars=tab:>-,trail:.
-endif
-
 let OmniCpp_MayCompleteDot = 1      " auto-complete with .
 let OmniCpp_MayCompleteArrow = 1    " auto-complete with ->
 let OmniCpp_MayCompleteScope = 1    " auto-complete with ::
@@ -88,14 +65,6 @@ filetype indent on
 filetype plugin on
 filetype on
 syntax on
-
-" iTerm sets terminal to xterm
-if &term == "xterm"
-    " force 256 colors
-    let &t_Co = 256
-    " enable mouse
-    set mouse=a
-endif
 
 " colorscheme adamsap
 
@@ -124,10 +93,6 @@ function! InsertTabWrapper(direction)
         return "\<c-n>"
     endif
 endfunction
-
-" Use ' to jump to mark line and column
-nnoremap ' `
-nnoremap ` '
 
 " Open file under cursor in a new tab
 nnoremap gf <c-w>gf
@@ -186,25 +151,6 @@ call pathogen#infect()
 
 set background=dark
 colorscheme solarized
-
-" git commit color mapping for cmder Solarized Git color scheme
-if &term == "win32"
-    exe "hi! gitcommitSummary        ctermfg=8"
-    exe "hi! gitcommitComment        ctermfg=5"
-    exe "hi! gitcommitUnmerged       ctermfg=10"
-    exe "hi! gitcommitOnBranch       ctermfg=5"
-    exe "hi! gitcommitBranch         ctermfg=12"
-    exe "hi! gitcommitDiscardedType  ctermfg=4"
-    exe "hi! gitcommitSelectedType   ctermfg=2"
-    exe "hi! gitcommitHeader         ctermfg=5"
-    exe "hi! gitcommitUntrackedFile  ctermfg=6"
-    exe "hi! gitcommitDiscardedFile  ctermfg=4"
-    exe "hi! gitcommitSelectedFile   ctermfg=2"
-    exe "hi! gitcommitUnmergedFile   ctermfg=14"
-    exe "hi! gitcommitFile           ctermfg=3"
-    exe "hi! Normal                  ctermfg=15"
-    set laststatus=1
-endif
 
 exe "hi! link hsDelimiter Statement"
 exe "hi! link hsStructure PreProc"
